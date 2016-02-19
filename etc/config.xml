@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Etre_WordPress>
+            <version>0.1.0</version>
+        </Etre_WordPress>
+    </modules>
+    <global>
+        <models>
+            <etre_wordpress>
+                <class>Etre_WordPress_Model</class>
+                <resourceModel>etre_wordpress_resource</resourceModel>
+            </etre_wordpress>
+            <etre_wordpress_resource>
+                <class>Etre_WordPress_Model_Resource</class>
+            </etre_wordpress_resource>
+            <widget>
+                <rewrite>
+                    <widget>Etre_WordPress_Model_Rewrite_Widget</widget>
+                </rewrite>
+            </widget>
+        </models>
+        <blocks>
+            <etre_wordpress>
+                <class>Etre_WordPress_Block</class>
+            </etre_wordpress>
+        </blocks>
+        <helpers>
+            <etre_wordpress>
+                <class>Etre_WordPress_Helper</class>
+            </etre_wordpress>
+        </helpers>
+    </global>
+        <!-- Used to create a callable URL containing widget-required CSS/JS content
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <controller before="Mage_Adminhtml">Etre_WordPress_Adminhtml</controller>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin> -->
+    <adminhtml>
+        <!-- Could be used to hijack CSS/JS from the route created above -
+            serving the wordpress plugin the css/js content that it requires.
+        <layout>
+            <updates>
+                <etre_wordpress>
+                    <file>etre_wordpress/widget.xml</file>
+                </etre_wordpress>
+            </updates>
+        </layout> -->
+        <events>
+            <controller_action_predispatch_adminhtml>
+                <observers>
+                    <etre_wordpress>
+                        <class>etre_wordpress/observer</class>
+                        <method>wpValidateFormKey</method>
+                    </etre_wordpress>
+                </observers>
+            </controller_action_predispatch_adminhtml>
+        </events>
+    </adminhtml>
+</config>

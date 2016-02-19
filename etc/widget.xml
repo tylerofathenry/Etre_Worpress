@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<widgets>
+    <wordpress_authorArchivesLink type="etre_wordpress/adminhtml_widgets_wordpress_author">
+        <name>WordPress: Author Archive Links</name>
+        <description type="desc">Generates URL to WordPress Author Archives</description>
+        <parameters>
+            <author_id translate="label description">
+                <visible>1</visible>
+                <label>Author ID</label>
+                <description>If set, only posts from this author will be displayed. Leave empty to display from all authors.</description>
+                <type>text</type>
+            </author_id>
+        </parameters>
+    </wordpress_authorArchivesLink>
+</widgets>
